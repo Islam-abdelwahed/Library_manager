@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Library Manager</string>
+    <string name="books">BOOKS</string>
+    <string name="book_sn">Book SN</string>
+    <string name="author_name">Author Name</string>
+    <string name="copies">Copies</string>
+    <string name="book_name">Book Name</string>
+    <string name="add">Add</string>
+    <string name="total">Total:</string>
+    <string name="scanmessage">PRESS VOLUME UP TO OPEN FLASH</string>
+    <string name="scantoast_s">Scan Succeed</string>
+    <string name="scantoast_f">Scan Failed</string>
+    <string name="delete_warning">Are you sure you want to delete :</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="deletebook">Delete Book</string>
+</resources>

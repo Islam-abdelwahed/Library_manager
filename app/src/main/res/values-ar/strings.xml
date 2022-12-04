@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مدير المكتبة</string>
+    <string name="books">الكتب</string>
+    <string name="book_sn">الرقم التسلسلى</string>
+    <string name="author_name">أسم الكاتب</string>
+    <string name="copies">عدد النسخ</string>
+    <string name="book_name">أسم الكتاب</string>
+    <string name="add">إضافة</string>
+    <string name="total">الإجمالى:</string>
+    <string name="scanmessage">اضغط على زر تكبير الصوت لتشغيل الفلاش</string>
+    <string name="scantoast_s">نجح المسح</string>
+    <string name="scantoast_f">فشل المسح</string>
+    <string name="delete_warning">هل أنت متأكد من أنك تريد حذف:</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">إلغاء</string>
+    <string name="deletebook">حذف كتاب</string>
+</resources>
