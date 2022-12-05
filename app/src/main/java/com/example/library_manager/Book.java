@@ -7,8 +7,13 @@ public class Book {
         public String BOOK_NAME="null";
         public String AUTHOR_NAME="null";
         public int BOOK_COPIES=0;
+        public  byte[] BOOK_IMAGE=null;
 
-        public String getBOOK_NAME() {
+    public byte[] getBOOK_IMAGE() {return BOOK_IMAGE;}
+
+    public void setBOOK_IMAGE(byte[] BOOK_IMAGE) {this.BOOK_IMAGE = BOOK_IMAGE;}
+
+    public String getBOOK_NAME() {
             return BOOK_NAME;
         }
 

@@ -1,19 +1,23 @@
 package com.example.library_manager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import com.example.library_manager.Book;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
@@ -29,6 +33,8 @@ public class Insert_Screen extends AppCompatActivity {
     EditText SN, BN, AN, BC;
     Button add;
     ImageButton SCAN_SN, SCAN_N;
+    ImageView B_IMG;
+    Bitmap b_img;
     ActivityResultLauncher<ScanOptions> RESULT = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
             Toast.makeText(this, (R.string.scantoast_s), Toast.LENGTH_SHORT).show();
@@ -37,6 +43,7 @@ public class Insert_Screen extends AppCompatActivity {
             Toast.makeText(this, (R.string.scantoast_f), Toast.LENGTH_SHORT).show();
     });
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +56,16 @@ public class Insert_Screen extends AppCompatActivity {
         BN = findViewById(R.id.book_name_et);
         BC = findViewById(R.id.book_copies_et);
         AN = findViewById(R.id.author_name_et);
+        B_IMG = findViewById(R.id.book_img);
+
+        B_IMG.setOnClickListener(v -> {
+            Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(i, 2);
+        });
 
         add.setOnClickListener(view -> {
             Book NB = new Book();
+            NB.setBOOK_IMAGE(Converter.bitmapToByte(b_img));
             NB.setBOOK_SN(SN.getText().toString());
             NB.setBOOK_NAME(BN.getText().toString());
             NB.setAUTHOR_NAME(AN.getText().toString());
@@ -86,6 +100,9 @@ public class Insert_Screen extends AppCompatActivity {
             Bitmap b = (Bitmap) data.getExtras().get("data");
             InputImage image = InputImage.fromBitmap(b, 0);
             recognizeText(image);
+        }else if(requestCode == 2 && resultCode == RESULT_OK){
+             b_img = (Bitmap) data.getExtras().get("data");
+             B_IMG.setImageBitmap(b_img);
         }
     }
 

@@ -9,89 +9,6 @@
     tools:layout_editor_absoluteY="-8dp">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="52dp"
-        android:hint="@string/author_name"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/author_name_et"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="105dp"
-            tools:layout_editor_absoluteY="310dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="288dp"
-        android:hint="@string/copies"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/book_copies_et"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="419dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="40dp"
-        android:hint="@string/book_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/book_name_et"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="191dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageButton
-        android:id="@+id/scan_n_bt"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/ic_baseline_document_scanner_24"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scan_sn_bt" />
-
-    <ImageButton
-        android:id="@+id/scan_sn_bt"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/ic_baseline_qr_code_scanner_24"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/add_bt"
         android:layout_width="wrap_content"
@@ -106,22 +23,116 @@
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
-        android:hint="@string/book_sn"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="140dp"
+        android:hint="@string/book_sn"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sn_et"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/sn_et"
             tools:layout_editor_absoluteX="105dp"
             tools:layout_editor_absoluteY="90dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="40dp"
+        android:hint="@string/author_name"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/author_name_et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="105dp"
+            tools:layout_editor_absoluteY="310dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/scan_n_bt"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/ic_baseline_document_scanner_24"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_sn_bt" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="52dp"
+        android:hint="@string/book_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/book_name_et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="191dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="228dp"
+        android:hint="@string/copies"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/book_copies_et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/scan_sn_bt"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/book_img"
+        android:layout_width="99dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_book_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

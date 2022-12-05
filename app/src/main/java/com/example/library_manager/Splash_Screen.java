@@ -9,14 +9,12 @@ import java.util.TimerTask;
 
 public class Splash_Screen extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         //-- ProgressBar --//
-        ProgressBar progressBar;
-        progressBar = findViewById(R.id.progressBar);
+        ProgressBar progressBar= findViewById(R.id.progressBar);
         Timer t = new Timer();
         TimerTask T = new TimerTask() {
             @Override
