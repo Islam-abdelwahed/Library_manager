@@ -112,10 +112,7 @@ public class Insert_Screen extends AppCompatActivity {
                 recognizer.process(image)
                         .addOnSuccessListener(visionText -> {
                             for (Text.TextBlock block : visionText.getTextBlocks()) {
-                                Rect boundingBox = block.getBoundingBox();
-                                Point[] cornerPoints = block.getCornerPoints();
                                 BN.setText(block.getText());
-
                                 for (Text.Line line : block.getLines()) {
 
                                     for (Text.Element element : line.getElements()) {
@@ -125,7 +122,7 @@ public class Insert_Screen extends AppCompatActivity {
                                         }
                                     }
                                 }
-                            }
+                                }
                         }).addOnFailureListener(e -> Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show());
     }
 }

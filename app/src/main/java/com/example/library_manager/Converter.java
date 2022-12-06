@@ -19,7 +19,7 @@ public class Converter {
         return null;
     }
 
-    public Bitmap getImageDataInBitmap(byte[] imageData) {
+    public static Bitmap getImageDataInBitmap(byte[] imageData) {
         if (imageData != null) {
             return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
         }

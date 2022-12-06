@@ -28,7 +28,7 @@
                 android:id="@+id/author_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/book_name_tv"
+                android:layout_above="@id/book_sn_tv"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -46,9 +46,10 @@
             <TextView
                 android:id="@+id/book_name_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:maxLines="2"
                 android:layout_toEndOf="@id/imageView"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/book_copies_tv"
                 android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.library_manager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 books = db.GetAllBooks();
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     dialogInterface.dismiss();
                     onResume();
                 }).show();
+                //adapter.notifyDataSetChanged();
             }
         }).attachToRecyclerView(rv);
     }
@@ -97,14 +100,14 @@ public class MainActivity extends AppCompatActivity {
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                onQueryTextChange(query);
-                return true;
+
+                return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                ArrayList<Book> book = db.search(newText);
-                /* adapter.set_search_result(books); */
+                ArrayList<Book> books = db.search(newText);
+                 adapter.set_search_result(books);
 
                 tv.setText(getString(R.string.total) + books.size());
                 if (newText == "") {

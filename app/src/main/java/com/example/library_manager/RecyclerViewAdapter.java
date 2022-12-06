@@ -1,15 +1,13 @@
 package com.example.library_manager;
 
-import android.graphics.BitmapFactory;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.BookViewHolder> {
@@ -20,6 +18,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.books = b;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void set_search_result(ArrayList<Book> b) {
         this.books = b;
         notifyDataSetChanged();
@@ -39,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.BN.setText(b.getBOOK_NAME());
         holder.AN.setText(b.getAUTHOR_NAME());
         holder.BC.setText("Copies:" + b.getBOOK_COPIES());
-        holder.BIMG.setImageBitmap(BitmapFactory.decodeByteArray(b.getBOOK_IMAGE(), 0, b.getBOOK_IMAGE().length));
+        holder.BIMG.setImageBitmap(Converter.getImageDataInBitmap(b.getBOOK_IMAGE()));
     }
 
     @Override
