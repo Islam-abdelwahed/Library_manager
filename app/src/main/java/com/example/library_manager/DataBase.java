@@ -18,6 +18,7 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "books";
     //----------------------------------------------//
     public static final String ID_CLN = "id";
+    //comment
     public static final String BOOK_SN_CLN = "book_SN";
     public static final String BOOK_NAME_CLN = "Book_name";
     public static final String AUTHOR_NAME_CLN = "Author_name";
