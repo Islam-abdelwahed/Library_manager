@@ -1,4 +1,4 @@
-package com.example.library_manager;
+package com.example.library_manager.Adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -8,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.library_manager.Book;
+import com.example.library_manager.Converter;
+import com.example.library_manager.R;
+
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.BookViewHolder> {

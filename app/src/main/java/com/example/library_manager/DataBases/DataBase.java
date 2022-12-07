@@ -1,4 +1,4 @@
-package com.example.library_manager;
+package com.example.library_manager.DataBases;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 
 import androidx.annotation.Nullable;
+
+import com.example.library_manager.Book;
+
 import java.util.ArrayList;
 
 public class DataBase extends SQLiteOpenHelper {
@@ -33,7 +36,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID_CLN + " INTEGER PRIMARY KEY AUTOINCREMENT," + BOOK_SN_CLN + " TEXT, " + BOOK_NAME_CLN + " TEXT, " + AUTHOR_NAME_CLN + " TEXT, " + BOOK_COPIES_CLN + " INTEGER ,"+ BOOK_IMG_CLN +" BLOB )");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID_CLN + " INTEGER PRIMARY KEY AUTOINCREMENT," + BOOK_SN_CLN + " TEXT UNIQUE, " + BOOK_NAME_CLN + " TEXT, " + AUTHOR_NAME_CLN + " TEXT, " + BOOK_COPIES_CLN + " INTEGER ,"+ BOOK_IMG_CLN +" BLOB )");
     }
 
     @Override
