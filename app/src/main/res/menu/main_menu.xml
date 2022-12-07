@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/menu_close"
-    android:icon="@drawable/ic_baseline_close_24"
-    android:title="Close"/>
+    <group>
+        <item
+            android:id="@+id/menu_close"
+            android:icon="@drawable/ic_baseline_close_24"
+            android:title="@string/close" />
+        <item
+            android:id="@+id/menu_borrow"
+            android:icon="@drawable/ic_baseline_library_books_24"
+            android:title="@string/add_borrowing" />
+
+        <item
+            android:id="@+id/menu_review"
+            android:icon="@drawable/ic_baseline_playlist_add_check_24"
+            android:title="@string/review" />
+    </group>
 </menu>

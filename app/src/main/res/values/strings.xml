@@ -14,4 +14,7 @@
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
     <string name="deletebook">Delete Book</string>
+    <string name="add_borrowing">Add Borrowing</string>
+    <string name="close">Close</string>
+    <string name="review">Review</string>
 </resources>
