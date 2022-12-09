@@ -1,9 +1,13 @@
-package com.example.library_manager;
+package com.example.library_manager.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.library_manager.Activities.MainActivity;
+import com.example.library_manager.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

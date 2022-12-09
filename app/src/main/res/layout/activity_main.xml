@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/Main_text"
@@ -46,7 +46,6 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/abril_fatface"
             android:gravity="center"
             android:text="@string/books"
             android:textColor="@color/white"

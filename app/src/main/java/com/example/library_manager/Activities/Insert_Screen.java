@@ -1,4 +1,4 @@
-package com.example.library_manager;
+package com.example.library_manager.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,7 +13,11 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.library_manager.Book;
+import com.example.library_manager.Converter;
 import com.example.library_manager.DataBases.DataBase;
+import com.example.library_manager.R;
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Insert_Screen"
+    tools:context=".Activities.Insert_Screen"
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="-8dp">
 

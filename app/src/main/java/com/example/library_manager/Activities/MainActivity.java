@@ -1,15 +1,17 @@
-package com.example.library_manager;
+package com.example.library_manager.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -18,7 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.library_manager.Adapters.RecyclerViewAdapter;
+import com.example.library_manager.Book;
+import com.example.library_manager.Borrow;
 import com.example.library_manager.DataBases.DataBase;
+import com.example.library_manager.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -132,6 +137,20 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case (R.id.menu_close):
+                finish();
+                break;
+            case (R.id.menu_borrow):
+                Intent i=new Intent(getApplicationContext(), Borrow.class);
+                startActivity(i);
+                break;
+        }
+        return true;
     }
 
     private void scancode() {
