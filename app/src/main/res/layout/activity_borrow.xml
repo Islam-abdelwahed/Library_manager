@@ -55,18 +55,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginBottom="220dp"
-        android:hint="@string/copies"
+        android:hint="Date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/book_copies_et"
+        <EditText
+            android:id="@+id/editTextDate"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="419dp" />
-
+            android:ems="10"
+            android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

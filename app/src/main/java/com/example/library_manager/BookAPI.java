@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,15 +19,15 @@ import java.net.URL;
 
 public class BookAPI extends AsyncTask<String,Void,String> {
     // Variables for the search input field, and results TextViews
-    private EditText mBookInput;
-    private TextView mTitleText;
-    private TextView mAuthorText;
+    private TextInputEditText mBookInput;
+    private TextInputEditText mTitleText;
+    private TextInputEditText mAuthorText;
 
     // Class name for Log tag
     private static final String LOG_TAG = BookAPI.class.getSimpleName();
 
     // Constructor providing a reference to the views in MainActivity
-    public BookAPI(TextView titleText, TextView authorText, EditText bookInput) {
+    public BookAPI(TextInputEditText titleText, TextInputEditText authorText, TextInputEditText bookInput) {
         this.mTitleText = titleText;
         this.mAuthorText = authorText;
         this.mBookInput = bookInput;
