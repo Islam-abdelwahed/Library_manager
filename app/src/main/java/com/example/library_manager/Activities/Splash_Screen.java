@@ -26,7 +26,6 @@ public class Splash_Screen extends AppCompatActivity {
                 int current = progressBar.getProgress();
                 if (current < progressBar.getMax()) {
                     current += 4;
-                    progressBar.setSecondaryProgress(current + 8);
                     progressBar.setProgress(current);
                 } else {
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);

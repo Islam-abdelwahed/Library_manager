@@ -1,6 +1,8 @@
 package com.example.library_manager.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +20,10 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.BookViewHolder> {
 
    public ArrayList<Book> books;
-
-    public RecyclerViewAdapter(ArrayList<Book> b) {
+   public Context c;
+    public RecyclerViewAdapter(ArrayList<Book> b, Context c) {
         this.books = b;
+        this.c=c;
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -51,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return books.size();
     }
 
-    static class BookViewHolder extends RecyclerView.ViewHolder {
+    class BookViewHolder extends RecyclerView.ViewHolder {
         public TextView BSN, BN, AN, BC;
         public ImageView BIMG;
         public BookViewHolder(@NonNull View itemView) {

@@ -2,19 +2,17 @@ package com.example.library_manager.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.library_manager.Book;
 import com.example.library_manager.BookAPI;
 import com.example.library_manager.Converters.ImageConverter;
@@ -63,7 +61,7 @@ public class Insert_Screen extends AppCompatActivity {
         AN = findViewById(R.id.author_name_et);
         B_IMG = findViewById(R.id.book_img);
         API_SER =  findViewById(R.id.sea);
-
+        b_img= BitmapFactory.decodeResource(this.getResources(),R.drawable.book);
 
 
         API_SER.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -74,7 +72,7 @@ public class Insert_Screen extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                new BookAPI(BN, AN, BN).execute(newText);
+                new BookAPI(BN, AN, BC).execute(newText);
                 return true;
             }
         });
@@ -134,11 +132,9 @@ public class Insert_Screen extends AppCompatActivity {
                 recognizer.process(image)
                         .addOnSuccessListener(visionText -> {
                             for (Text.TextBlock block : visionText.getTextBlocks()) {
-                                SN.setText(block.getText());
+                                BN.setText(block.getText());
                                 for (Text.Line line : block.getLines()) {
-                                    BN.setText(block.getLines().toString());
                                     for (Text.Element element : line.getElements()) {
-                                        AN.setText(element.toString());
                                         for (Text.Symbol symbol : element.getSymbols()) {
                                         }
                                     }

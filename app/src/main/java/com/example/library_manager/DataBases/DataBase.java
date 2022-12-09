@@ -18,7 +18,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     //---------------------------------------------------//
     public static final String DB_NAME = "library_manager";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 4;
     public static final String TABLE_NAME = "books";
     //----------------------------------------------//
     public static final String ID_CLN = "id";
@@ -26,6 +26,7 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String BOOK_NAME_CLN = "Book_name";
     public static final String AUTHOR_NAME_CLN = "Author_name";
     public static final String BOOK_COPIES_CLN = "Book_copies";
+    public static final String BOOK_IMG_CLN = "Book_img";
     //----------------------------------------------//
 
     public DataBase(@Nullable Context context) {
@@ -34,13 +35,13 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID_CLN + " INTEGER PRIMARY KEY AUTOINCREMENT," + BOOK_SN_CLN + " TEXT, " + BOOK_NAME_CLN + " TEXT, " + AUTHOR_NAME_CLN + " TEXT, " + BOOK_COPIES_CLN + " INTEGER )");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID_CLN + " INTEGER PRIMARY KEY AUTOINCREMENT," + BOOK_SN_CLN + " TEXT, " + BOOK_NAME_CLN + " TEXT, " + AUTHOR_NAME_CLN + " TEXT, " + BOOK_COPIES_CLN + " INTEGER,"+BOOK_IMG_CLN+" BLOB)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        //  sqLiteDatabase.execSQL("DROP tABLE IF EXISTS " + TABLE_NAME);
-        // onCreate(sqLiteDatabase);
+          sqLiteDatabase.execSQL("DROP tABLE IF EXISTS " + TABLE_NAME);
+          onCreate(sqLiteDatabase);
     }
 
     public void InsertBook(Book b) {
@@ -50,6 +51,7 @@ public class DataBase extends SQLiteOpenHelper {
         Values.put(BOOK_NAME_CLN, b.getBOOK_NAME());
         Values.put(AUTHOR_NAME_CLN, b.getAUTHOR_NAME());
         Values.put(BOOK_COPIES_CLN, b.getBOOK_COPIES());
+        Values.put(BOOK_IMG_CLN,b.getBOOK_IMAGE());
         DB.insert(TABLE_NAME, null, Values);
     }
 
@@ -71,6 +73,7 @@ public class DataBase extends SQLiteOpenHelper {
                 bk.BOOK_NAME = cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN));
                 bk.AUTHOR_NAME = cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN));
                 bk.BOOK_COPIES = cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN));
+                bk.BOOK_IMAGE=cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN));
                 books.add(bk);
             } while (cursor.moveToNext());
             cursor.close();
@@ -97,6 +100,7 @@ public class DataBase extends SQLiteOpenHelper {
                 bk.BOOK_NAME = cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN));
                 bk.AUTHOR_NAME = cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN));
                 bk.BOOK_COPIES = cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN));
+                bk.BOOK_IMAGE=cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN));
                 books.add(bk);
             } while (cursor.moveToNext());
             cursor.close();

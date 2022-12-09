@@ -25,12 +25,12 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="?android:attr/progressBarStyle"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:max="100"
-        android:progress="15"
-        android:secondaryProgress="30" />
+        android:progress="15" />
+
 
 </LinearLayout>
 </RelativeLayout>

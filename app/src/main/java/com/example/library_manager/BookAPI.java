@@ -142,7 +142,7 @@ public class BookAPI extends AsyncTask<String,Void,String> {
             int i = 0;
             String title = null;
             String authors = null;
-
+            Byte []image=null;
             // Look for results in the items array, exiting when both the title and author
             // are found or when all items have been checked.
             while (i < itemsArray.length() || (authors == null && title == null)) {

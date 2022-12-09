@@ -1,7 +1,13 @@
 package com.example.library_manager.Converters;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+
+import com.example.library_manager.R;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -23,6 +29,6 @@ public class ImageConverter {
         if (imageData != null) {
             return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
         }
-        return null;
+        return  null;
     }
 }

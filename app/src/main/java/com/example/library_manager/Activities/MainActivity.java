@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter = new RecyclerViewAdapter(db.GetAllBooks());
+        adapter = new RecyclerViewAdapter(db.GetAllBooks(),getApplicationContext());
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         rv = findViewById(R.id.Book_list);
         rv.setHasFixedSize(true);
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 ArrayList<Book> books = db.search(newText);
-                 adapter.set_search_result(books);
+               //  adapter.set_search_result(books);
 
                 tv.setText(getString(R.string.total) + books.size());
                 if (newText == "") {
