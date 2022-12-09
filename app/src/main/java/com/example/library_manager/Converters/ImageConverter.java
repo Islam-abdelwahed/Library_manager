@@ -1,11 +1,11 @@
-package com.example.library_manager;
+package com.example.library_manager.Converters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class Converter {
+public class ImageConverter {
 
     public static byte[] bitmapToByte(Bitmap bitmap) {
         try { ByteArrayOutputStream stream = new ByteArrayOutputStream();

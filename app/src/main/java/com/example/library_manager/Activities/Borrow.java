@@ -1,8 +1,8 @@
-package com.example.library_manager;
+package com.example.library_manager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import com.example.library_manager.R;
 
 public class Borrow extends AppCompatActivity {
 

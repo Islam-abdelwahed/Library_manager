@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.library_manager.Book;
-import com.example.library_manager.Converter;
+import com.example.library_manager.Converters.ImageConverter;
 import com.example.library_manager.DataBases.DataBase;
 import com.example.library_manager.R;
 import com.google.android.gms.tasks.Task;
@@ -65,7 +65,7 @@ public class Insert_Screen extends AppCompatActivity {
 
         add.setOnClickListener(view -> {
             Book NB = new Book();
-            NB.setBOOK_IMAGE(Converter.bitmapToByte(b_img));
+            NB.setBOOK_IMAGE(ImageConverter.bitmapToByte(b_img));
             NB.setBOOK_SN(SN.getText().toString());
             NB.setBOOK_NAME(BN.getText().toString());
             NB.setAUTHOR_NAME(AN.getText().toString());

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Library_manager"
         tools:targetApi="31">
         <activity
-            android:name=".Borrow"
+            android:name=".Activities.Borrow"
             android:exported="false">
         </activity>
         <activity

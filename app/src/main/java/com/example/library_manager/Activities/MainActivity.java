@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.library_manager.Adapters.RecyclerViewAdapter;
 import com.example.library_manager.Book;
-import com.example.library_manager.Borrow;
 import com.example.library_manager.DataBases.DataBase;
 import com.example.library_manager.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

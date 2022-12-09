@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.library_manager.Book;
-import com.example.library_manager.Converter;
+import com.example.library_manager.Converters.ImageConverter;
 import com.example.library_manager.R;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.BN.setText(b.getBOOK_NAME());
         holder.AN.setText(b.getAUTHOR_NAME());
         holder.BC.setText("Copies:" + b.getBOOK_COPIES());
-        holder.BIMG.setImageBitmap(Converter.getImageDataInBitmap(b.getBOOK_IMAGE()));
+        holder.BIMG.setImageBitmap(ImageConverter.getImageDataInBitmap(b.getBOOK_IMAGE()));
     }
 
     @Override
