@@ -71,7 +71,7 @@ public class Borrow extends AppCompatActivity {
             scancode();
             BID.setText(barcode);
         });
-
+        ///
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
