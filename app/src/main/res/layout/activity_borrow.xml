@@ -7,18 +7,18 @@
     tools:context=".Activities.Borrow">
 
     <ImageButton
-        android:id="@+id/scan_sn_bt2"
+        android:id="@+id/scan_sn"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginTop="252dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/ic_baseline_qr_code_scanner_24"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/scan_sn_bt4"
+        android:id="@+id/scan_bid"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginTop="148dp"
@@ -28,19 +28,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="52dp"
-        android:hint="Borrower Id"
+        android:layout_marginTop="44dp"
+        android:hint="@string/borrower_id"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/book_name_et"
+            android:id="@+id/bid_et"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="104dp"
@@ -48,36 +49,26 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <TextView
+        android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="220dp"
-        android:hint="Date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <EditText
-            android:id="@+id/editTextDate"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintBottom_toTopOf="@+id/expire_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="140dp"
-        android:hint="@string/book_sn"
+        android:layout_marginTop="56dp"
 
+        android:hint="@string/book_sn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sn_et"
@@ -104,19 +95,29 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="56dp"
-        android:hint="Borrower Name"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="143dp"
+        android:hint="@string/borrower_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/author_name_et"
+            android:id="@+id/bn_et"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="105dp"
             tools:layout_editor_absoluteY="310dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/expire_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        android:textColor="#F44336"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

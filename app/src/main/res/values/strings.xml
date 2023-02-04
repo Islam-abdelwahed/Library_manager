@@ -17,4 +17,10 @@
     <string name="add_borrowing">Add Borrowing</string>
     <string name="close">Close</string>
     <string name="review">Review</string>
+    <string name="today">\"Today: \"</string>
+    <string name="expire">\"Exp_D: \"</string>
+    <string name="borrower_name">Borrower Name</string>
+    <string name="borrower_id">Borrower Id</string>
+    <string name="finish">Finish</string>
+    <string name="about">\"This application helps you manage the business of your library and add books and store them by feeding data or searching for the book on the Internet and also helps you in inventory books in a faster way by serial number \"</string>
 </resources>

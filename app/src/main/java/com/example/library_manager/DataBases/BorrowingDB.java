@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.library_manager.Borrowing;
+import com.example.library_manager.DatacClass.Borrowing;
 
 public class BorrowingDB extends SQLiteOpenHelper {
 
@@ -34,7 +34,6 @@ public class BorrowingDB extends SQLiteOpenHelper {
         db.execSQL("DROP tABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-
     public void InsertBorrowing(Borrowing b) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();

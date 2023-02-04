@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.library_manager.Book;
+import com.example.library_manager.DatacClass.Book;
 
 import java.util.ArrayList;
 
@@ -68,12 +68,12 @@ public class DataBase extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Book bk = new Book();
-                bk.BOOK_ID = cursor.getInt(cursor.getColumnIndex(ID_CLN));
-                bk.BOOK_SN = cursor.getString(cursor.getColumnIndex(BOOK_SN_CLN));
-                bk.BOOK_NAME = cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN));
-                bk.AUTHOR_NAME = cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN));
-                bk.BOOK_COPIES = cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN));
-                bk.BOOK_IMAGE=cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN));
+                bk.setBOOK_ID(cursor.getInt(cursor.getColumnIndex(ID_CLN))) ;
+                bk.setBOOK_SN (cursor.getString(cursor.getColumnIndex(BOOK_SN_CLN))) ;
+                bk.setBOOK_NAME (cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN))) ;
+                bk.setAUTHOR_NAME (cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN))) ;
+                bk.setBOOK_COPIES (cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN))) ;
+                bk.setBOOK_IMAGE(cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN)));
                 books.add(bk);
             } while (cursor.moveToNext());
             cursor.close();
@@ -95,12 +95,12 @@ public class DataBase extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Book bk = new Book();
-                bk.BOOK_ID = cursor.getInt(cursor.getColumnIndex(ID_CLN));
-                bk.BOOK_SN = cursor.getString(cursor.getColumnIndex(BOOK_SN_CLN));
-                bk.BOOK_NAME = cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN));
-                bk.AUTHOR_NAME = cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN));
-                bk.BOOK_COPIES = cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN));
-                bk.BOOK_IMAGE=cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN));
+                bk.setBOOK_ID(cursor.getInt(cursor.getColumnIndex(ID_CLN))) ;
+                bk.setBOOK_SN (cursor.getString(cursor.getColumnIndex(BOOK_SN_CLN))) ;
+                bk.setBOOK_NAME (cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN))) ;
+                bk.setAUTHOR_NAME (cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN))) ;
+                bk.setBOOK_COPIES (cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN))) ;
+                bk.setBOOK_IMAGE(cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN)));
                 books.add(bk);
             } while (cursor.moveToNext());
             cursor.close();
@@ -108,4 +108,22 @@ public class DataBase extends SQLiteOpenHelper {
         return books;
     }
 
+    @SuppressLint("Range")
+    public Book SearchBySn(String s) {
+        Book bk = new Book();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + BOOK_SN_CLN + " LIKE '%" + s + "%'", null);
+        if (cursor.moveToFirst()) {
+            do {
+                bk.setBOOK_ID(cursor.getInt(cursor.getColumnIndex(ID_CLN))) ;
+                bk.setBOOK_SN (cursor.getString(cursor.getColumnIndex(BOOK_SN_CLN))) ;
+                bk.setBOOK_NAME (cursor.getString(cursor.getColumnIndex(BOOK_NAME_CLN))) ;
+                bk.setAUTHOR_NAME (cursor.getString(cursor.getColumnIndex(AUTHOR_NAME_CLN))) ;
+                bk.setBOOK_COPIES (cursor.getInt(cursor.getColumnIndex(BOOK_COPIES_CLN))) ;
+                bk.setBOOK_IMAGE(cursor.getBlob(cursor.getColumnIndex(BOOK_IMG_CLN)));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        return bk;
+    }
 }

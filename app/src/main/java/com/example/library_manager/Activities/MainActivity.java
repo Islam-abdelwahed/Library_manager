@@ -1,163 +1,98 @@
 package com.example.library_manager.Activities;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.Manifest;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.SearchView;
 import android.widget.Toast;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.library_manager.Adapters.RecyclerViewAdapter;
-import com.example.library_manager.Book;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+import com.example.library_manager.Adapters.PagerAdapter;
 import com.example.library_manager.DataBases.DataBase;
+import com.example.library_manager.DatacClass.Book;
 import com.example.library_manager.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.journeyapps.barcodescanner.CaptureActivity;
-import com.journeyapps.barcodescanner.ScanContract;
-import com.journeyapps.barcodescanner.ScanOptions;
+import com.example.library_manager.fragments.AddBookFragment;
+import com.example.library_manager.fragments.BookFragment;
+import com.example.library_manager.fragments.SettingsFragment;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
-
-    RecyclerView rv;
-    DataBase db = new DataBase(this);
-    ArrayList<Book> books;
-    RecyclerViewAdapter adapter;
-    TextView tv;
-    SearchView search;
-    ActivityResultLauncher<ScanOptions> RESULT = registerForActivityResult(new ScanContract(), result -> {
-        if (result.getContents() != null) {
-            Toast.makeText(this, (R.string.scantoast_s), Toast.LENGTH_SHORT).show();
-            search.setQuery(result.getContents(), true);
-        } else
-            Toast.makeText(this, (R.string.scantoast_f), Toast.LENGTH_SHORT).show();
-    });
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        adapter = new RecyclerViewAdapter(db.GetAllBooks(),getApplicationContext());
-        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
-        rv = findViewById(R.id.Book_list);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(lm);
-        rv.setAdapter(adapter);
-        tv.setText(getString(R.string.total) + db.NUMBER_OF_BOOKS());
-
-
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                books = db.GetAllBooks();
-                Book Deleted_book = books.get(viewHolder.getAdapterPosition());
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle((R.string.deletebook));
-                builder.setMessage(getString(R.string.delete_warning) + Deleted_book.getBOOK_NAME());
-                builder.setPositiveButton((R.string.delete), (dialogInterface, i) -> {
-                    adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    db.DeleteBook(Deleted_book);
-                    dialogInterface.dismiss();
-                    onResume();
-                });
-                builder.setNegativeButton((R.string.cancel), (dialogInterface, i) -> {
-                    dialogInterface.dismiss();
-                    onResume();
-                }).show();
-                //adapter.notifyDataSetChanged();
-            }
-        }).attachToRecyclerView(rv);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FloatingActionButton ADD = findViewById(R.id.ADD_FAB);
-        tv = findViewById(R.id.Books_num_tv);
-        ImageButton m = findViewById(R.id.mbt), s = findViewById(R.id.scanbt);
-        TextView MainText = findViewById(R.id.textView);
-        search = findViewById(R.id.SearchButton);
 
-        s.setOnClickListener(view -> scancode());
-        ADD.setOnClickListener(view -> {
-            Intent i = new Intent(getApplicationContext(), Insert_Screen.class);
-            startActivity(i);
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
+        checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 2);
+        checkPermission(Manifest.permission.CAMERA, 3);
+        checkPermission(Manifest.permission.INTERNET, 4);
+
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        ArrayList<String> tabs = new ArrayList<>();
+        ArrayList<Integer> tabs_icons = new ArrayList<>();
+        //-------------------------------------------------//
+        tabs.add("Home");
+        tabs.add("Add Book");
+        tabs_icons.add(R.drawable.ic_baseline_home_24);
+        tabs_icons.add(R.drawable.ic_baseline_add_24);
+        tabs_icons.add(R.drawable.ic_baseline_manage_accounts_24);
+        //-------------------------------------------------//
+        fragments.add(BookFragment.newInstance("ss", "ss"));
+        fragments.add(AddBookFragment.newInstance("ADD"));
+        fragments.add(SettingsFragment.newInstance("", ""));
+        //-------------------------------------------------//
+
+        TabLayout tabLayout = findViewById(R.id.tablayout);
+        ViewPager2 viewPager = findViewById(R.id.mainpage);
+        setTitle(R.string.books);
+
+        viewPager.setAdapter(new PagerAdapter(this, fragments));
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            //tab.setText(tabs.get(position));
+            tab.setIcon(tabs_icons.get(position));
+        }).attach();
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                BookFragment.Refresh();
+            }
         });
 
-        search.clearFocus();
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ArrayList<Book> books = db.search(newText);
-               //  adapter.set_search_result(books);
-
-                tv.setText(getString(R.string.total) + books.size());
-                if (newText == "") {
-                    MainText.setVisibility(View.VISIBLE);
-                    s.setVisibility(View.GONE);
-                    m.setVisibility(View.VISIBLE);
-                } else {
-                    MainText.setVisibility(View.GONE);
-                    s.setVisibility(View.VISIBLE);
-                    m.setVisibility(View.GONE);
-                }
-                return true;
-            }
-        });
-        registerForContextMenu(m);
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-    }
 
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case (R.id.menu_close):
-                finish();
-                break;
-            case (R.id.menu_borrow):
-                Intent i=new Intent(getApplicationContext(), Borrow.class);
-                startActivity(i);
-                break;
+    public void checkPermission(String permission, int requestCode)
+    {
+        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
         }
-        return true;
+        else {
+         //   Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void scancode() {
-        ScanOptions options = new ScanOptions();
-        options.setBeepEnabled(true);
-        options.setPrompt(getString(R.string.scanmessage));
-        options.setOrientationLocked(true);
-        options.setCaptureActivity(CaptureActivity.class);
-        RESULT.launch(options);
-    }
 }

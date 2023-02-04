@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddBookFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/book_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+                android:layout_margin="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/book_sn"
+                app:endIconDrawable="@drawable/ic_baseline_search_24"
+                app:endIconMode="custom"
+                android:layout_margin="20dp"
+                app:startIconDrawable="@drawable/ic_baseline_qr_code_scanner_24"
+                app:startIconCheckable="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sn_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:hint="@string/book_name"
+                app:endIconCheckable="true"
+                app:endIconDrawable="@drawable/ic_baseline_close_24"
+                app:startIconDrawable="@drawable/ic_baseline_document_scanner_24"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/book_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/author_name"
+                app:endIconDrawable="@drawable/ic_baseline_close_24"
+                app:endIconMode="clear_text"
+                android:layout_margin="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/author_name_et"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/copies"
+                android:layout_margin="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/book_copies_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                style="Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:id="@+id/add_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:iconGravity="textEnd"
+                android:text="@string/add"
+                android:layout_margin="20dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

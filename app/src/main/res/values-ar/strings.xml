@@ -15,7 +15,13 @@
     <string name="delete">حذف</string>
     <string name="cancel">إلغاء</string>
     <string name="deletebook">حذف كتاب</string>
-    <string name="add_borrowing">Add Borrowing</string>
-    <string name="close">Close</string>
-    <string name="review">Review</string>
+    <string name="add_borrowing">إضافة إستعارة</string>
+    <string name="close">إغلاق</string>
+    <string name="review">جرد</string>
+    <string name="today">\"اليوم: \"</string>
+    <string name="expire">\"تاريخ الاإنتهاء:\"</string>
+    <string name="borrower_name">Borrower Name</string>
+    <string name="borrower_id">Borrower Id</string>
+    <string name="finish">إنهاء</string>
+    <string name="about">\"This application helps you manage the business of your library and add books and store them by feeding data or searching for the book on the Internet and also helps you in inventory books in a faster way by serial number \"</string>
 </resources>

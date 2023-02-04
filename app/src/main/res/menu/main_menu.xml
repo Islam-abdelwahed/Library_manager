@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group>
-        <item
-            android:id="@+id/menu_close"
-            android:icon="@drawable/ic_baseline_close_24"
-            android:title="@string/close" />
+
         <item
             android:id="@+id/menu_borrow"
             android:icon="@drawable/ic_baseline_library_books_24"
@@ -12,7 +10,14 @@
 
         <item
             android:id="@+id/menu_review"
+            app:showAsAction="collapseActionView"
             android:icon="@drawable/ic_baseline_playlist_add_check_24"
             android:title="@string/review" />
     </group>
+    <item
+        android:id="@+id/searchicon"
+        android:title="search"
+        android:icon="@drawable/car_ui_icon_search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
 </menu>

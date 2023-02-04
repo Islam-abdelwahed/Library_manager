@@ -1,24 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Library_manager"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.Borrow"
-            android:exported="false">
+            android:name=".Activities.Inventory_Result"
+            android:exported="false"
+            android:theme="@style/Theme.Library_manager_main">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
-            android:name=".Activities.Insert_Screen"
+            android:name=".Activities.Scan_Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activities.Borrow"
             android:exported="false" />
         <activity
             android:name=".Activities.Splash_Screen"
@@ -29,14 +48,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activities.MainActivity"
-            android:exported="false" />
-
+            android:exported="false"
+            android:theme="@style/Theme.Library_manager_main" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:resizeableActivity="true"
+            android:screenOrientation="sensor"
+            tools:replace="screenOrientation" />
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -1,89 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activities.MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/Main_text"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/mainpage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tablayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        app:cardBackgroundColor="@color/Orange"
-        app:cardCornerRadius="25dp"
-        android:layout_margin="10dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/SearchButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/mbt"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:background="@color/Orange"
-            android:minWidth="48dp"
-            android:src="@drawable/ic_baseline_menu_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content"
+            android:text="@string/book_name" />
 
-        <ImageButton
-            android:id="@+id/scanbt"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_qr_code_scanner_24"
-            android:layout_gravity="end"
-            android:visibility="gone"
-            android:background="@color/Orange"
-            android:layout_marginEnd="10dp"
-            app:tint="@color/white" />
+            android:layout_height="wrap_content"
+            android:text="@string/book_name" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/books"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:textStyle="bold" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_name" />
+    </com.google.android.material.tabs.TabLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Main_text"
-        android:id="@+id/Books_num_tv"
-        android:gravity="center"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Book_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/Books_num_tv"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="1dp"
-        android:padding="10dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/ADD_FAB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

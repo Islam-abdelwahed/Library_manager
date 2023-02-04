@@ -1,4 +1,4 @@
-package com.example.library_manager;
+package com.example.library_manager.DatacClass;
 
 public class Borrowing {
     public String BORROWER_NAME;
